@@ -1,14 +1,23 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { UserInfoPage } from './pages/UserInfoPage';
+import { LoginPage } from './pages/LoginPage';
+import { SignupPage } from './pages/SignupPage';
+import { PrivateRoute } from './auth/PrivateRoute';
 
 export const Routes = () => {
-    return (
-        <Router>
-            <Switch>
-                <Route path="/" exact>
-                    <UserInfoPage />
-                </Route>
-            </Switch>
-        </Router>
-    );
-}
+  return (
+    <Router>
+      <Switch>
+        <PrivateRoute path="/" exact>
+          <UserInfoPage />
+        </PrivateRoute>
+        <Route path="/signup">
+          <SignupPage />
+        </Route>
+        <Route path="/login">
+          <LoginPage />
+        </Route>
+      </Switch>
+    </Router>
+  );
+};
